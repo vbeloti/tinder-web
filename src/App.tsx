@@ -6,6 +6,7 @@ import SwipeButtons from "./components/SwipeButtons";
 
 import "./App.css";
 import Chats from "./components/Chats";
+import ChatScreen from "./components/ChatScreen";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Switch>
           <Route path="/chat/:person">
             <Header backButton="/chat" />
-            <Chats />
+            <ChatScreen />
           </Route>
           <Route path="/chat">
             <Header backButton="/" />
