@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TinderCard from "react-tinder-card";
 
 import "./styles.css";
+import db from "../../configs/firebase";
+
+interface IPeople {
+  name: string;
+  url: string;
+}
 
 const TinderCards: React.FC = () => {
-  const [people, setPeople] = useState([
+  const [people, setPeople] = useState<IPeople[]>([
     {
       name: "Dwayne Johnson ",
       url:
@@ -17,15 +23,24 @@ const TinderCards: React.FC = () => {
     },
   ]);
 
+  useEffect(() => {
+    const unsubscribe = db
+      .collection("people")
+      .onSnapshot((snapshot) =>
+        setPeople(snapshot.docs.map((doc) => doc.data() as IPeople))
+      );
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
   return (
     <div className="tinderCards">
       <div className="tinderCards__cardContainer">
         {people.map((person) => (
-          <div className="swipe">
-            <TinderCard
-              preventSwipe={["up", "down"]}
-              key={person.name}
-            >
+          <div className="swipe" key={person.name}>
+            <TinderCard preventSwipe={["up", "down"]} key={person.name}>
               <div
                 style={{ backgroundImage: `url(${person.url})` }}
                 className="card"
