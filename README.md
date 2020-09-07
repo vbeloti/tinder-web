@@ -1,7 +1,6 @@
 ## Tinder (React.js && Typescript && Firebase)
 
-<!-- <img src="" alt="Tinder" /> -->
-
+<img src="https://github.com/vbeloti/tinder-web/blob/master/.github/img/tinder-1.jpg?raw=true" alt="Tinder" />
 
 In the project directory, you can run:
 
