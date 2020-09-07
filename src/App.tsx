@@ -5,19 +5,21 @@ import TinderCards from "./components/TinderCards";
 import SwipeButtons from "./components/SwipeButtons";
 
 import "./App.css";
+import Chats from "./components/Chats";
 
 function App() {
   return (
     <div className="app">
-      <Header />
       <Router>
         <Switch>
           <Route path="/chat">
-            <h1>Chat</h1>
+            <Header backButton="/" />
+            <Chats />
           </Route>
           <Route path="/">
-           <TinderCards />
-           <SwipeButtons />
+            <Header />
+            <TinderCards />
+            <SwipeButtons />
           </Route>
         </Switch>
       </Router>
